@@ -1,13 +1,16 @@
 const express = require('express')
+const cors = require('cors')
 const mongoose = require('mongoose')
 const requireDir = require('require-dir')
+const config = require('./config/config')
 
 
 
 const app = express()
 app.use(express.json())
+app.use(cors())
 
-mongoose.connect('mongodb://jhonnym:minhasenhasecreta@localhost:27017/nodeapi',
+mongoose.connect(config.bd_string,
 {useNewUrlParser: true})
 
 requireDir('./src/models')
